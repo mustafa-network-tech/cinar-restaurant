@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #fdfbf7;
+  --foreground: #3c2a21;
+  --cream: #f7f4ef;
+  --olive: #4a6741;
+  --olive-light: #5d7f52;
+  --coffee: #3c2a21;
+  --warm-white: #fdfbf7;
+  --muted: #6b5a50;
+  /* Ada atmosferi: hafif deniz buğusu + kum + zeytin silueti */
+  --sea-mist: rgba(124, 158, 152, 0.14);
+  --sand-glow: rgba(218, 207, 188, 0.45);
+  --olive-glow: rgba(74, 103, 65, 0.08);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), ui-serif, Georgia, serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }
 
 body {
-  background: var(--background);
+  background-color: var(--warm-white);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+  background-image:
+    radial-gradient(125% 90% at 50% -15%, var(--sea-mist), transparent 52%),
+    radial-gradient(ellipse 70% 50% at 100% 0%, var(--sand-glow), transparent 55%),
+    radial-gradient(ellipse 65% 45% at 0% 100%, var(--olive-glow), transparent 55%);
+  background-attachment: scroll;
+}
+
+.font-heading {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--olive) 25%, transparent);
+  color: var(--coffee);
 }
